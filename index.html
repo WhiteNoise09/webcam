@@ -13,7 +13,7 @@
     	const videoElement = document.querySelector('video');
 
     	try {
-    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { advanced: [{ facingMode: 'environment'}] } });
+    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { facingMode: 'environment' } });
     	    console.log(media);
     	}
     	catch(e) {
@@ -23,9 +23,9 @@
     	//console.log(window.URL.createObjectURL(media.getVideoTracks()[0]));
     	/*let string = '';
     	media.getVideoTracks().forEach(t => string += t.label + '\n');
-    	document.body.textContent = string;
+    	document.body.textContent = string;*/
     	videoElement.srcObject = media;
-    	videoElement.play();*/
+    	videoElement.play();
     })();
 </script>
 
