@@ -13,7 +13,7 @@
     	const videoElement = document.querySelector('video');
 
     	try {
-    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: true});
+    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: facingMode: { exact: 'environment' }});
     	    console.log(media);
     	}
     	catch(e) {
