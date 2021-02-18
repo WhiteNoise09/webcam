@@ -8,32 +8,24 @@
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia ||
                          navigator.msGetUserMedia);*/
-    (async () => {/*
+    (async () => {
     	let media = null;
     	const videoElement = document.querySelector('video');
 
     	try {
-    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { facingMode: 'environment' } });
+    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: true});
+    	    console.log(media);
     	}
     	catch(e) {
     		document.querySelector('body').textContent = e
     	}
 
     	//console.log(window.URL.createObjectURL(media.getVideoTracks()[0]));
-    	videoElement.srcObject = media;
-    	videoElement.play();*/
     	let string = '';
-    	navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-			  devices.forEach(function(device) {
-			    string+= device.kind + ": " + device.label +
-			                " id = " + device.deviceId + '\n';
-			  });
-			  document.body.textContent = string;
-			})
-			.catch(function(err) {
-			  console.log(err.name + ": " + err.message);
-			});
+    	media.getVideoTracks().forEach(t => string += t.label + '\n');
+    	document.body.textContent = string;
+    	videoElement.srcObject = media;
+    	videoElement.play();
     })();
 </script>
 
