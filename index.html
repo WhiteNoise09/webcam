@@ -27,7 +27,7 @@
 			.then(function(devices) {
 			  devices.forEach(function(device) {
 			    string+= device.kind + ": " + device.label +
-			                " id = " + device.deviceId;
+			                " id = " + device.deviceId + '\n';
 			  });
 			  document.body.textContent = string;
 			})
