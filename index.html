@@ -1,5 +1,5 @@
 <body>
-	instance 4
+	instance 5
 	<video width=100%></video>
 </body>
 
@@ -13,7 +13,7 @@
     	const videoElement = document.querySelector('video');
 
     	try {
-    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { facingMode: "user"});
+    	    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { facingMode: { exact: "environment" } });
     	}
     	catch(e) {
     		document.querySelector('body').textContent = e
