@@ -1,5 +1,5 @@
 <body>
-	instance 9
+	instance 10
 	<video width=100%></video>
 </body>
 
@@ -26,6 +26,12 @@
     	document.body.textContent = string;*/
     	videoElement.srcObject = media;
     	videoElement.play();
+
+    	const barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
+
+    	setTimeout(() => {
+    		barcodeDetector.detect(videoElement).then(datas => document.querySelector('body').textContent = JSON.stringify(datas)).catch(e => document.querySelector('body').textContent = e);
+    	}, 1000);
     })();
 </script>
 
